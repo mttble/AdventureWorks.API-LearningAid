@@ -3,4 +3,4 @@ using ErrorOr;
 
 namespace AdventureWorks.API.Application.Weather.Queries.GetWeatherForecast;
 
-public record GetWeatherForecastQuery(bool ErrorIfFalse) : IRequest<ErrorOr<List<WeatherForecast>>>;
+public record GetWeatherForecastQuery(string City) : IRequest<ErrorOr<List<WeatherForecast>>>;
