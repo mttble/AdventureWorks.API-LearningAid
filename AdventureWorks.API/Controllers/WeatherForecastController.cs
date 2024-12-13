@@ -15,7 +15,8 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
     {
         logger.LogDebug("Received request to get weather forecast..");
 
-        var result = await mediator.Send(new GetWeatherForecastQuery(weatherRequest.City));
+        var result = await mediator.Send(new GetWeatherForecastQuery(weatherRequest.City));        
+        logger.LogDebug("Result: {Result}", result);
         return result.IsError ? result.FirstError.ToActionResult() : Ok(result.Value);
     }
 }

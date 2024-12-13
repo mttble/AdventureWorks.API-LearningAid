@@ -2,12 +2,11 @@ using FluentValidation;
 
 namespace AdventureWorks.API.Application.Weather.Queries.GetWeatherForecast;
 
-public class GetWeatherForecastQueryValidator : AbstractValidator<GetWeatherForecastQuery>
+public class GetWeatherForeCastQueryValidator : AbstractValidator<GetWeatherForecastQuery>
 {
-    public GetWeatherForecastQueryValidator()
+    public GetWeatherForeCastQueryValidator()
     {
-        RuleFor(x => x.City)
-            .Must(city => city.Equals("Adelaide", StringComparison.OrdinalIgnoreCase))
+        RuleFor(x => x.City).Must(x => x.Equals("Adelaide", StringComparison.OrdinalIgnoreCase))
             .WithMessage("Only Adelaide is supported at this time.");
     }
 }

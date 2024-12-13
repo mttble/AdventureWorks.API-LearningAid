@@ -13,7 +13,7 @@ internal class GetWeatherForecastQueryHandler(ILogger<GetWeatherForecastQueryHan
 
     public async Task<ErrorOr<List<WeatherForecast>>> Handle(GetWeatherForecastQuery request,
         CancellationToken cancellationToken)
-    {
+    {                
         await Task.Delay(Random.Shared.Next(200, 800), cancellationToken);
         
         // Randomly throw exception 33% of the time
