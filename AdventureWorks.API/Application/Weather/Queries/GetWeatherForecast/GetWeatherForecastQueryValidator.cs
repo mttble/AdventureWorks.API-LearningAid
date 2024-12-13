@@ -1,5 +1,6 @@
-using AdventureWorks.API.Application.Weather.Queries.GetWeatherForecast;
 using FluentValidation;
+
+namespace AdventureWorks.API.Application.Weather.Queries.GetWeatherForecast;
 
 public class GetWeatherForecastQueryValidator : AbstractValidator<GetWeatherForecastQuery>
 {

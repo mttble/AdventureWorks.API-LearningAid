@@ -11,11 +11,17 @@ internal class GetWeatherForecastQueryHandler(ILogger<GetWeatherForecastQueryHan
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-
     public async Task<ErrorOr<List<WeatherForecast>>> Handle(GetWeatherForecastQuery request,
         CancellationToken cancellationToken)
     {
         await Task.Delay(Random.Shared.Next(200, 800), cancellationToken);
+        
+        // Randomly throw exception 33% of the time
+        if (Random.Shared.Next(3) == 0)
+        {
+            throw new Exception("Random weather service failure!");
+        }
+
         return Enumerable.Range(1, 10).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

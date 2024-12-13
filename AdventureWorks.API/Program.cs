@@ -2,8 +2,10 @@ using AdventureWorks.API.Application.Common.Data;
 using AdventureWorks.API.Application.Common.Extensions;
 using AdventureWorks.API.Application.Common.Pipelines;
 using AdventureWorks.API.Application.Common.Settings;
+using AdventureWorks.API.Middleware;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +28,11 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) app.MapOpenApi();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
